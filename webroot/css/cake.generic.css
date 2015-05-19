@@ -359,6 +359,7 @@ input[type=submit] {
 	width: auto;
 }
 form .submit input[type=submit] {
+/*
 	background:#62af56;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#76BF6B), to(#3B8230));
 	background-image: -webkit-linear-gradient(top, #76BF6B, #3B8230);
@@ -367,6 +368,7 @@ form .submit input[type=submit] {
 	color: #fff;
 	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
 	padding: 8px 10px;
+*/
 }
 form .submit input[type=submit]:hover {
 	background: #5BA150;
@@ -512,6 +514,7 @@ p.error em {
 input[type=submit],
 .actions ul li a,
 .actions a {
+/*
 	font-weight:normal;
 	padding: 4px 8px;
 	background: #dcdcdc;
@@ -534,13 +537,16 @@ input[type=submit],
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0px 1px 1px rgba(0, 0, 0, 0.2);
 	-webkit-user-select: none;
 	user-select: none;
+*/
 }
+/*
 .actions ul li a:hover,
 .actions a:hover {
 	background: #ededed;
 	border-color: #acacac;
 	text-decoration: none;
 }
+*/
 input[type=submit]:active,
 .actions ul li a:active,
 .actions a:active {

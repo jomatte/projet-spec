@@ -45,6 +45,7 @@ class PagesController extends AppController {
  *	or MissingViewException in debug mode.
  */
 	public function display() {
+/*
 		$path = func_get_args();
 
 		$count = count($path);
@@ -72,5 +73,8 @@ class PagesController extends AppController {
 			}
 			throw new NotFoundException();
 		}
+*/
+		$this->set('title_for_layout', 'Application de stages');
+
 	}
 }

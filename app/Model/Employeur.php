@@ -13,6 +13,7 @@ class Employeur extends AppModel {
  * @var string
  */
 	public $displayField = 'nom_entreprise';
+	public $order = 'nom_entreprise';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

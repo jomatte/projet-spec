@@ -8,6 +8,8 @@ App::uses('AppController', 'Controller');
  */
 class ContactsController extends AppController {
 
+	public $uses = array('Contact', 'Employeur');
+
 /**
  * Components
  *
@@ -23,6 +25,13 @@ class ContactsController extends AppController {
 		$conditions = array('conditions' => array(
 			'Contact.id_employeur' => $id
 		));
+		
+		$this->Employeur->recursive = 0;
+		$this->set('employeur', $this->Employeur->find('first', array(
+			'conditions' => array(
+				'id' => $id
+			)
+		)));
 		$this->set('contacts', $this->Contact->find('all', $conditions));
 		$this->set('id', $id);
 	}
@@ -51,7 +60,7 @@ class ContactsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Contact->create();
 			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash(__('The contact has been saved.'));
+				$this->Session->setFlash(__('Le contact a été sauvegardé.'));
 				return $this->redirect(array('action' => 'index', $id));
 			} else {
 				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
@@ -97,17 +106,16 @@ class ContactsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function delete($idEmployeur = null, $id = null) {
 		$this->Contact->id = $id;
 		if (!$this->Contact->exists()) {
 			throw new NotFoundException(__('Invalid contact'));
 		}
-		$this->request->allowMethod('post', 'delete');
 		if ($this->Contact->delete()) {
 			$this->Session->setFlash(__('Le contact a été supprimé.'));
 		} else {
 			$this->Session->setFlash(__('The contact could not be deleted. Please, try again.'));
 		}
-		return $this->redirect(array('action' => 'index', $id));
+		return $this->redirect(array('action' => 'index', $idEmployeur));
 	}
 }

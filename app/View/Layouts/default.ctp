@@ -22,8 +22,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
+		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
@@ -35,21 +34,44 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 	<link rel="stylesheet" href="/css/font-awesome.css">
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+	<header>
+		<?php echo $this->element('header'); ?>
+	</header>
 	<div id="container">
-		<div id="header">
-		</div>
+
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<div id="footer">
 
-		</div>
 	</div>
+	
+	<footer>
+		<?php echo $this->element('footer'); ?>
+	</footer>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    
+    <script type="text/javascript">
+  	if (window.jQuery === undefined) {
+  		var script_tag = document.createElement('script');
+  		    script_tag.setAttribute("type", "text/javascript");
+  		    script_tag.setAttribute("src", "/js/libs/jquery-1.8.0.min.js");
+  		(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+  	}
+    </script>
+
+	<?php echo $this->Html->script('/js/libs/jquery.validate'); ?> 
+  	<?php echo $this->Html->script('/js/libs/localization/messages_fr'); ?> 
+	<?php echo $this->Html->script('/js/bootstrap'); ?> 
+	<?php echo $this->Html->script('/js/script'); ?> 
+	<?php echo $this->fetch('script'); ?>
 
 </body>
 </html>

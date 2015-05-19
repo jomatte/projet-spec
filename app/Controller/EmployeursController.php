@@ -20,12 +20,30 @@ class EmployeursController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Employeur->recursive = 0;
-		$this->Paginator->settings=array(
-			'limit' => '20'
-		);
-		$this->set('employeurs', $this->Paginator->paginate());
-		//$this->set('employeurs', $this->Employeur->find('all'));
+		$employeurs = $this->Employeur->find('all');
+		
+		foreach($employeurs as &$employeur) {
+			if($employeur['Employeur']['url']) {
+				if(!strstr($employeur['Employeur']['url'], 'http://www.') && !strstr($employeur['Employeur']['url'], 'www.') && !strstr($employeur['Employeur']['url'], 'http://')) 
+				{
+					$employeur['Employeur']['url'] = 'http://www.' . $employeur['Employeur']['url'];
+				}
+				else if(!strstr($employeur['Employeur']['url'], 'http://')) {
+					$employeur['Employeur']['url'] = 'http://' . $employeur['Employeur']['url'];
+				}
+				else if(!strstr($employeur['Employeur']['url'], 'www.')) {
+					if(strstr($employeur['Employeur']['url'], 'http://')){
+						$employeur['Employeur']['url'] = 'http://www.' . substr($employeur['Employeur']['url'], 6);
+					}
+					else if(strstr($employeur['Employeur']['url'], 'http:')) {
+						$employeur['Employeur']['url'] = 'http://www.' . substr($employeur['Employeur']['url'], 4);
+					}
+				}
+			}
+			
+		}
+		
+		$this->set('employeurs', $employeurs);
 	}
 
 /**
@@ -97,7 +115,6 @@ class EmployeursController extends AppController {
 		if (!$this->Employeur->exists()) {
 			throw new NotFoundException(__('Invalid employeur'));
 		}
-		$this->request->allowMethod('post', 'delete');
 		if ($this->Employeur->delete()) {
 			$this->Session->setFlash(__('L\'employeur a été supprimé.'));
 		} else {
