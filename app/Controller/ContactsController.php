@@ -66,8 +66,9 @@ class ContactsController extends AppController {
 				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
 			}
 		}
-		$idEmployeurs = $this->Contact->Employeur->find('list');
-		$this->set(compact('idEmployeurs'));
+		$employeur = $this->Contact->Employeur->find('list');
+		$employeurCourrant = $employeur[$id];
+		$this->set('employeur', $employeurCourrant);
 		$this->set('id', $id);
 		$this->render('edit');
 	}
@@ -94,9 +95,10 @@ class ContactsController extends AppController {
 			$options = array('conditions' => array('Contact.' . $this->Contact->primaryKey => $idContact));
 			$this->request->data = $this->Contact->find('first', $options);
 		}
-		$idEmployeurs = $this->Contact->Employeur->find('list');
+		$employeur = $this->Contact->Employeur->find('list');
+		$employeurCourrant = $employeur[$id];
 		$this->set('id', $id);
-		$this->set(compact('idEmployeurs'));
+		$this->set('employeur', $employeurCourrant);
 	}
 
 /**

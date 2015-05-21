@@ -13,7 +13,7 @@
 		<?php endif; ?>
 	<?php
 		echo $this->Form->hidden('id');
-		echo $this->Form->input('nom_entreprise', array('label' => 'Nom de l\'entreprise : '));
+		echo $this->Form->input('nom_entreprise', array('label' => 'Nom de l\'entreprise : ', 'required' => 'required'));
 		echo $this->Form->input('adresse_postale', array('label' => 'Adresse postale : '));
 		echo $this->Form->input('ville', array('label' => 'Ville : '));
 		echo $this->Form->input('province', array('label' => 'Province : '));

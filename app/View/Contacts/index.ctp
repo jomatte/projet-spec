@@ -45,8 +45,8 @@
 						<td><?php echo ($contact['Contact']['est_sollicitable']) ? 'Oui' : 'Non'; ?>&nbsp;</td>
 					</tr>
 					<tr class="tActions">
-						<td class="actions"><a href="/contacts/edit/<?php echo $contact['Contact']['id']; ?>/<?php echo $id; ?>"><i class="fa fa-pencil"></i></a></td>
-						<td class="actions"><a href="/contacts/delete/<?php echo $id; ?>/<?php echo $contact['Contact']['id']; ?>" onclick="return confirm('Êtes-vous certains de vouloir supprimer le contact : <?php echo $contact['Contact']['prenom'] . ' ' . $contact['Contact']['nom']; ?> ?')";><i class="fa fa-trash-o"></i></a></td>
+						<td ><a class="ok" href="/contacts/edit/<?php echo $contact['Contact']['id']; ?>/<?php echo $id; ?>"><i class="fa fa-pencil"></i></a></td>
+						<td><a class="sup" href="/contacts/delete/<?php echo $id; ?>/<?php echo $contact['Contact']['id']; ?>" onclick="return confirm('Êtes-vous certains de vouloir supprimer le contact : <?php echo $contact['Contact']['prenom'] . ' ' . $contact['Contact']['nom']; ?> ?')";><i class="fa fa-trash-o"></i></a></td>
 					</tr>
 				</tbody>
 			</table>

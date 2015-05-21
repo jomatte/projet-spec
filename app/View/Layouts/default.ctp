@@ -69,7 +69,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 	<?php echo $this->Html->script('/js/libs/jquery.validate'); ?> 
   	<?php echo $this->Html->script('/js/libs/localization/messages_fr'); ?> 
-	<?php echo $this->Html->script('/js/bootstrap'); ?> 
 	<?php echo $this->Html->script('/js/script'); ?> 
 	<?php echo $this->fetch('script'); ?>
 

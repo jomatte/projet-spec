@@ -53,12 +53,24 @@ body{
 	font-family: 'arial', no-serif;
 }
 
-h1, h2, form legend{
+h1, h2{
 	font-size:45px;
 	text-align:center;
 	margin-top:70px;
-	margin-bottom:90px;
+	margin-bottom:70px;
 	color:black;
+}
+
+form legend{
+	font-size:38px;
+	text-align:center;
+	margin-top:60px;
+	margin-bottom:40px;
+	color:black;
+}
+
+h1#titreEmployeur{
+	margin-bottom:20px;
 }
 
 div#content{
@@ -67,6 +79,12 @@ div#content{
 
 div.paging{
 	margin-bottom:30px;
+}
+
+div.message {
+	color:white;
+	background-color: #109d59;
+	font-family: 'arial', no-serif;
 }
 
 /* -------------- Nav -------------- */
@@ -79,11 +97,15 @@ nav{
 
 nav a{
 	text-decoration: none;
-	color:black;
+	color: black;
 }
 
 nav a:hover{
-	text-decoration: underline;
+	color: black;
+}
+
+nav a:hover i{
+	color:#008947;
 }
 
 nav .nav-1 {
@@ -115,7 +137,7 @@ nav a i{
 /* -------------- Formulaire -------------- */
 
 form{
-	width:50%;
+	width:40%;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -139,15 +161,19 @@ fieldset{
 
 form .submit input[type=submit] {
 	padding:10px 40px;
-	background-color:#0086D4;
+	background-color:#109d59;
 	color:white;
 	border:none;
 	font-weight: light;	
 }
 
 form .submit input[type=submit]:hover{
-	background-color:#0670ae;
+	background-color:#008947;
 } 
+
+input[type=submit] {
+	cursor: pointer;
+}
 
 /* -------------- Header -------------- */
 
@@ -233,6 +259,46 @@ table.tContact tr.tActions td {
 	font-size:20px;
 }
 
+table.tContact tr.rowDecoration {
+	background-color:#a0c2ff;
+}
+
+table.tContact i {
+	font-size:30px;
+}
+
+/* -------------- Éditer contact -------------- */
+
+#ContactEditForm div.group, #ContactAddForm div.group{
+	margin-left:-8px;
+	position:relative;
+	margin-bottom:-6px;
+}
+
+#ContactEditForm div.group div:first-child, #ContactAddForm div.group div:first-child{
+	width:70%;
+}
+
+#ContactEditForm div.group .champPoste, #ContactAddForm div.group .champPoste {
+	width:30%;
+}
+
+#ContactEditForm div.group .champPoste input[type=text], #ContactAddForm div.group .champPoste input[type=text]{
+	height:34px;
+}
+
+#ContactEditForm div.group .champPoste, #ContactAddForm div.group .champPoste {
+	position:absolute;
+	top:0;
+	right:-45px;
+}
+
+#ContactEditForm div.group .champTitre, #ContactAddForm div.group .champTitre {
+	position:absolute;
+	top:0;
+	right:-12px;
+}
+
 /* -------------- Liste employeurs -------------- */
 
 
@@ -244,11 +310,33 @@ div.employeur table thead{
 	background-color: #4387f6;
 }
 
+div.employeur table thead th {
+	color:black;
+}
+
+div.employeur table thead th a{
+	color:black;
+}
+
+div.employeur table thead th a:hover{
+	text-decoration: underline;
+	color:black;
+}
+
 div.employeur table thead tr th {
 	padding-top:20px;
-	padding-bottom:10px;
-	vertical-align: center;
+	padding-bottom:15px;
 	padding-left:10px;
+}
+
+div.employeur table thead tr th i {
+	position:relative;
+	left:8px;
+	top:3px;
+}
+
+div.employeur table thead tr th a {
+	margin-top:-14px;
 }
 
 div.employeur table{
@@ -263,59 +351,116 @@ div.employeur i{
 	margin-right:12px;
 }
 
+div.employeur td.fleche i{
+	font-size:16px;
+	margin-left:8px;
+	margin-right:10px;
+}
+
 div.employeur i:last-child {
 	margin-right:5px;
 }
 
-div.employeur a.ok i{
-	color: #4387f6;
+a.ok i{
+	color: #109d59;
 }
 
-div.employeur a.ok i:hover{
-	color: #3276f1;
+a.ok i:hover{
+	color: #008947;
 }
 
-div.employeur a.sup i{
+a.sup i{
 	color: #dd4337;
 }
 
-div.employeur a.sup i:hover{
+a.sup i:hover{
 	color: #c03a30;
 }
 
 div.employeur tbody tr{
 	border-bottom:2px solid #4387f6;
 	cursor:pointer;
-	
 }
 
 div.employeur tbody tr:hover{
-	background-color:#a2c2ff;
+	background-color:#a0c2ff;
+}
+
+div.employeur tbody tr:hover{
+	background-color:#a0c2ff;
+}
+
+div.employeur .tOuvert{
+	border-bottom: none;
 }
 
 div.employeur table .tableauCache{
-	border-left:2px solid #4387f6;
-	background-color: #a2c2ff !important;
+	background-color: #7bd0a9 !important;
 	display:none;
+	padding-top:10px;
 }
 
-
-/* -------------- Suppression -------------- */
-
-.hide{
-	display:none;
+div.employeur table .tableauCache p{
+	margin-bottom:8px;
 }
 
-.modal{
-	position:fixed;
-	top:50%;
-	left:50%;z-index:1050;overflow:auto;width:560px;margin:-250px 0 0 -280px;background-color:#ffffff;border:1px solid #999;border:1px solid rgba(0, 0, 0, 0.3);*border:1px solid #999;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);-moz-box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);box-shadow:0 3px 7px rgba(0, 0, 0, 0.3);-webkit-background-clip:padding-box;-moz-background-clip:padding-box;background-clip:padding-box;}.modal.fade{-webkit-transition:opacity .3s linear, top .3s ease-out;-moz-transition:opacity .3s linear, top .3s ease-out;-ms-transition:opacity .3s linear, top .3s ease-out;-o-transition:opacity .3s linear, top .3s ease-out;transition:opacity .3s linear, top .3s ease-out;top:-25%;}
+div.employeur table .tableauCache span{
+	position:absolute;
+	left:220px;
+}
 
-.fade{-webkit-transition:opacity 0.15s linear;-moz-transition:opacity 0.15s linear;-ms-transition:opacity 0.15s linear;-o-transition:opacity 0.15s linear;transition:opacity 0.15s linear;opacity:0;}.fade.in{opacity:1;}
+div.employeur table .tableauCache td{
+	padding-top:15px;
+	padding-bottom:10px;
+}
 
+div.employeur form#FormulaireAdminForm input[type=text]{
+	width:65%;
+	padding-left:40px;
+}
 
+div.employeur form#FormulaireAdminForm input[type=submit]{
+	padding:11px 40px;
+	background-color:#109d59;
+	color:white;
+	border:none;
+	font-weight: light;
+	position:relative;
+	top:-2px;
+	left:20px;
+	cursor: pointer;
+}
 
+div.employeur form#FormulaireAdminForm label#lblFormRecherche {
+	position:relative;
+	top:33px;
+	left:10px;
+	width:10px;
+}
 
+div.employeur form#FormulaireAdminForm input[type=submit]:hover {
+	background-color:#008947;	
+}
+
+div.employeur form#FormulaireAdminForm {
+	margin-bottom:40px;
+	width:50%;
+}
+
+div.employeur .flecheActif{
+	/* Safari */
+	-webkit-transform: rotate(-180deg);
+	
+	/* Firefox */
+	-moz-transform: rotate(-180deg);
+	
+	/* IE */
+	-ms-transform: rotate(-180deg);
+	
+	/* Opera */
+	-o-transform: rotate(-180deg);
+
+}
 
 
 

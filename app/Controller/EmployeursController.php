@@ -20,7 +20,17 @@ class EmployeursController extends AppController {
  * @return void
  */
 	public function index() {
-		$employeurs = $this->Employeur->find('all');
+		$conditions = '';
+		$ordre = '';
+		if(isset($_GET['tri'])) {
+			if(isset($_GET['ordre'])) {
+				$ordre = ' ' . $_GET['ordre'];
+			}
+			$conditions = array('order' => array(
+				$_GET['tri'] . $ordre
+			));
+		}
+			$employeurs = $this->Employeur->find('all', $conditions);
 		
 		foreach($employeurs as &$employeur) {
 			if($employeur['Employeur']['url']) {
@@ -45,6 +55,58 @@ class EmployeursController extends AppController {
 		
 		$this->set('employeurs', $employeurs);
 	}
+	
+/**
+ * Recherche method
+ *
+ * @return void
+ */	
+	public function recherche($motif = null) {
+		$employeurs = $this->Employeur->find('all', array(
+				'conditions' => array(
+					'region_pays LIKE' => '%' . $motif . '%'
+				)
+			));
+		$employeurs = array_merge($this->Employeur->find('all', array(
+			'conditions' => array(
+				'nom_entreprise LIKE' => '%' . $motif . '%'
+			)
+		)), $employeurs);
+		
+		$this->set('employeurs', $employeurs);
+	}
+
+/**
+ * Trier method
+ *
+ * @return void
+ */	
+/*
+	public function trier($tri = null, $ordre = null, $motif = '') {
+		$this->Employeur->recursive = 0;
+		
+		$employeurs = $this->Employeur->find('all', array(
+				'conditions' => array(
+					'region_pays LIKE' => '%' . $motif . '%'
+				),
+				'order' => array(
+					$tri . ' ' . $ordre, 
+				)
+			));
+		$employeurs = array_merge($this->Employeur->find('all', array(
+			'conditions' => array(
+				'nom_entreprise LIKE' => '%' . $motif . '%'
+			),
+			'order' => array(
+					$tri . ' ' . $ordre, 
+				)
+		)), $employeurs);
+			
+		debug($employeurs);
+		die();
+		$this->set('employeurs', $employeurs);
+	}
+*/
 
 /**
  * view method
