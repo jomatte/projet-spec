@@ -43,7 +43,7 @@ class EmployeursController extends AppController {
 				}
 				else if(!strstr($employeur['Employeur']['url'], 'www.')) {
 					if(strstr($employeur['Employeur']['url'], 'http://')){
-						$employeur['Employeur']['url'] = 'http://www.' . substr($employeur['Employeur']['url'], 6);
+						$employeur['Employeur']['url'] = 'http://www.' . substr($employeur['Employeur']['url'], 7);
 					}
 					else if(strstr($employeur['Employeur']['url'], 'http:')) {
 						$employeur['Employeur']['url'] = 'http://www.' . substr($employeur['Employeur']['url'], 4);
@@ -73,40 +73,29 @@ class EmployeursController extends AppController {
 			)
 		)), $employeurs);
 		
-		$this->set('employeurs', $employeurs);
-	}
-
-/**
- * Trier method
- *
- * @return void
- */	
-/*
-	public function trier($tri = null, $ordre = null, $motif = '') {
-		$this->Employeur->recursive = 0;
-		
-		$employeurs = $this->Employeur->find('all', array(
-				'conditions' => array(
-					'region_pays LIKE' => '%' . $motif . '%'
-				),
-				'order' => array(
-					$tri . ' ' . $ordre, 
-				)
-			));
-		$employeurs = array_merge($this->Employeur->find('all', array(
-			'conditions' => array(
-				'nom_entreprise LIKE' => '%' . $motif . '%'
-			),
-			'order' => array(
-					$tri . ' ' . $ordre, 
-				)
-		)), $employeurs);
+		foreach($employeurs as &$employeur) {
+			if($employeur['Employeur']['url']) {
+				if(!strstr($employeur['Employeur']['url'], 'http://www.') && !strstr($employeur['Employeur']['url'], 'www.') && !strstr($employeur['Employeur']['url'], 'http://')) 
+				{
+					$employeur['Employeur']['url'] = 'http://www.' . $employeur['Employeur']['url'];
+				}
+				else if(!strstr($employeur['Employeur']['url'], 'http://')) {
+					$employeur['Employeur']['url'] = 'http://' . $employeur['Employeur']['url'];
+				}
+				else if(!strstr($employeur['Employeur']['url'], 'www.')) {
+					if(strstr($employeur['Employeur']['url'], 'http://')){
+						$employeur['Employeur']['url'] = 'http://www.' . substr($employeur['Employeur']['url'], 7);
+					}
+					else if(strstr($employeur['Employeur']['url'], 'http:')) {
+						$employeur['Employeur']['url'] = 'http://www.' . substr($employeur['Employeur']['url'], 4);
+					}
+				}
+			}
 			
-		debug($employeurs);
-		die();
+		}
+		
 		$this->set('employeurs', $employeurs);
 	}
-*/
 
 /**
  * view method

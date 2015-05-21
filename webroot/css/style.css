@@ -50,10 +50,23 @@ table {
 /* -------------- Général -------------- */
 
 body{
-	font-family: 'arial', no-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
-h1, h2{
+header{
+	
+}
+
+h1{
+	color:white;
+	background: none;
+	text-align:center;
+	position:relative;
+	top:-80px;
+	font-size: 42px;
+}
+
+h2{
 	font-size:45px;
 	text-align:center;
 	margin-top:70px;
@@ -84,8 +97,21 @@ div.paging{
 div.message {
 	color:white;
 	background-color: #109d59;
-	font-family: 'arial', no-serif;
 }
+
+/* -------------- Header -------------- */
+
+header{
+	padding:30px 40px 0 40px;
+	background-color:#0086D4;
+}
+
+header #logo_cegep{
+	position:absolute;
+	top:50px;
+	right:40px;
+}
+
 
 /* -------------- Nav -------------- */
 
@@ -113,6 +139,7 @@ nav .nav-1 {
 	width:200px;
 	position:relative;
 	top:20px;
+	left:18px;
 	
 }
 
@@ -150,6 +177,10 @@ form a{
 	text-decoration: none;
 }
 
+form label{
+	margin-bottom:6px;
+}
+
 form a:hover{
 	text-decoration: underline;
 	color:red;
@@ -164,7 +195,6 @@ form .submit input[type=submit] {
 	background-color:#109d59;
 	color:white;
 	border:none;
-	font-weight: light;	
 }
 
 form .submit input[type=submit]:hover{
@@ -173,19 +203,6 @@ form .submit input[type=submit]:hover{
 
 input[type=submit] {
 	cursor: pointer;
-}
-
-/* -------------- Header -------------- */
-
-header{
-	padding:30px 70px;
-	background-color:#0086D4;
-}
-
-header #logo_cegep{
-	position:absolute;
-	top:50px;
-	right:70px;
 }
 
 /* -------------- Footer -------------- */
@@ -218,11 +235,10 @@ div.contact h3.erreurContact {
 
 table.tContact{
 	border:2px solid #4387f6;
-	width:40%;
-	/*float:left; */
+	width:30%;
 	display:inline-table;
-	margin-left:30px;
-	margin-right:30px;
+	margin-left:15px;
+	margin-right:15px;
 	margin-bottom:50px;
 }
 
@@ -235,10 +251,19 @@ table.tContact tr, table.tContact td{
 	border:3px solid #4387f6;
 }
 
-table.tContact tr.tActions td, table.tContact tr.tTelephone td, table.tContact tr.tCell td, table.tContact tr.tCourriel td, table.tContact tr.tSollicitable td{
+table.tContact tr.tActions td, table.tContact tr.tInfos td{
 	padding-top:20px;
 	padding-bottom:20px;
 	text-align:center;
+	font-size:20px;
+}
+
+table.tContact tr.tInfos td p{
+	margin-bottom:20px;
+}
+
+table.tContact tr.tInfos td p:last-child{
+	margin-bottom:0;
 }
 
 table.tContact tr.tPosteOccupe td {
@@ -272,10 +297,14 @@ table.tContact i {
 #ContactEditForm div.group, #ContactAddForm div.group{
 	margin-left:-8px;
 	position:relative;
-	margin-bottom:-6px;
+	margin-bottom:-20px;
 }
 
-#ContactEditForm div.group div:first-child, #ContactAddForm div.group div:first-child{
+#ContactEditForm div.groupPrenom div:last-child, #ContactAddForm div.groupPrenom div:last-child{
+	width:87%;
+}
+
+#ContactEditForm div.groupTel div:first-child, #ContactAddForm div.groupTel div:first-child{
 	width:70%;
 }
 
@@ -294,13 +323,40 @@ table.tContact i {
 }
 
 #ContactEditForm div.group .champTitre, #ContactAddForm div.group .champTitre {
+	margin-left:-8px;
+	margin-top:-8px;
+}
+
+#ContactEditForm div.group .champPrenom, #ContactAddForm div.group .champPrenom {
 	position:absolute;
 	top:0;
-	right:-12px;
+	right:-54px;
+}
+
+/* -------------- Éditer employeur -------------- */
+
+#EmployeurEditForm div.groupProvince, #EmployeurAddForm div.groupProvince {
+	position:relative;
+	margin-left:-8px;
+	margin-bottom: -18px;
+}
+
+#EmployeurEditForm div.group div, #EmployeurAddForm div.group div {
+	width:45%;
+}
+
+#EmployeurEditForm div.group div:last-child, #EmployeurAddForm div.group div:last-child{
+	position:absolute;
+	top:7px;
+	right:0;
 }
 
 /* -------------- Liste employeurs -------------- */
 
+div.employeur #lblFormRecherche i{
+	position:relative;
+	top:5px;
+}
 
 div.employeur table tr:nth-child(even) {
 	background-color: white;
@@ -312,6 +368,18 @@ div.employeur table thead{
 
 div.employeur table thead th {
 	color:black;
+}
+
+div.employeur td.grand {
+	width:35%;
+}
+
+div.employeur td.moyen{
+	width:20%;
+}
+
+div.employeur td.petit {
+	width:10%;
 }
 
 div.employeur table thead th a{
@@ -395,9 +463,13 @@ div.employeur .tOuvert{
 }
 
 div.employeur table .tableauCache{
-	background-color: #7bd0a9 !important;
+	background-color: #dfdfdf !important;
 	display:none;
 	padding-top:10px;
+}
+
+div.employeur table .innactif{
+	background-color: #dfdfdf !important;
 }
 
 div.employeur table .tableauCache p{
@@ -424,7 +496,6 @@ div.employeur form#FormulaireAdminForm input[type=submit]{
 	background-color:#109d59;
 	color:white;
 	border:none;
-	font-weight: light;
 	position:relative;
 	top:-2px;
 	left:20px;
@@ -460,6 +531,10 @@ div.employeur .flecheActif{
 	/* Opera */
 	-o-transform: rotate(-180deg);
 
+}
+
+div.employeur .btnActions a {
+	margin-right:12px;
 }
 
 

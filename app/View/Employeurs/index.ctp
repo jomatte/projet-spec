@@ -5,7 +5,7 @@
 	</div>
 </nav>
 <div class="employeur">
-	<h1 id="titreEmployeur">Liste d'employeurs</h1>
+	<h2 id="titreEmployeur">Liste d'employeurs</h2>
 	<form action="/admin/formulaires" class="search" id="FormulaireAdminForm" method="post" accept-charset="utf-8">
 		<label for="data[Formulaire][nom]" id="lblFormRecherche"><i class="fa fa-search"></i></label>
 		<input name="data[Formulaire][nom]" placeholder="Chercher un employeur ou une région" class="input-medium" maxlength="255" type="text" id="txtRecherche">
@@ -15,7 +15,7 @@
 	<table>
 		<thead>
 			<?php if(isset($_GET['tri']) && isset($_GET['ordre'])): ?>
-				<th><a href="?tri=nom_entreprise<?php echo ($_GET['ordre'] == 'ASC' && $_GET['tri'] == 'region_pays') ? '&ordre=DESC' : '&ordre=ASC'; ?>">Nom d'entreprise<i class="fa fa-sort"></i></a></th>
+				<th><a href="?tri=nom_entreprise<?php echo ($_GET['ordre'] == 'ASC' && $_GET['tri'] == 'nom_entreprise') ? '&ordre=DESC' : '&ordre=ASC'; ?>">Nom d'entreprise<i class="fa fa-sort"></i></a></th>
 			<?php else : ?>
 				<th><a href="?tri=nom_entreprise&ordre=ASC">Nom d'entreprise<i class="fa fa-sort"></i></a></th>
 			<?php endif; ?>
@@ -35,10 +35,10 @@
 		<?php foreach($employeurs as $employeur): ?>
 			<tr class="tableauInterractif <?php echo ($i % 2 == 0) ? 'bleu' : '' ?>">
 				
-				<td class="fleche"><i class="fa fa-arrow-down"></i><?php echo h($employeur['Employeur']['nom_entreprise']) ?></td>
-				<td><?php echo h($employeur['Employeur']['url']) ?></td>
-				<td><?php echo h($employeur['Employeur']['region_pays']) ?></td>
-				<td>
+				<td class="fleche grand"><i class="fa fa-arrow-down"></i><?php echo h($employeur['Employeur']['nom_entreprise']) ?></td>
+				<td class="grand"><?php echo h($employeur['Employeur']['url']) ?></td>
+				<td class="moyen"><?php echo h($employeur['Employeur']['region_pays']) ?></td>
+				<td class="btnActions petit">
 					<a class="ok" href="/contacts/index/<?php echo $employeur['Employeur']['id']; ?>"><i class="fa fa-user"></i></a>
 					<a class="ok" href="/employeurs/edit/<?php echo $employeur['Employeur']['id']; ?>"><i class="fa fa-pencil"></i></a>
 					<a class="sup" href="/employeurs/delete/<?php echo $employeur['Employeur']['id']; ?>" onclick="return confirm('Êtes-vous certains de vouloir supprimer l\'entreprise : <?php echo $employeur['Employeur']['nom_entreprise']; ?> ?')";>

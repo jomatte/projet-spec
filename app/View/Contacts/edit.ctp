@@ -16,21 +16,23 @@
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->hidden('id_employeur', array('value' => $id)); ?>
-		<div class="group">
-		<?php echo $this->Form->input('prenom', array('label' => 'Prénom : ')); ?>
+		<div class="group groupPrenom">
 			<div class="champTitre">
 				<?php echo $this->Form->input('titre', array('options' => array(
-					'M, Mme' => 'Monsieur, Madame',
-					'M.' => 'Monsieur',
-					'Mme.' => 'Madame'
+					'M, Mme' => 'M, Mme',
+					'M.' => 'M.',
+					'Mme.' => 'Mme.'
 				), 'label' => 'Titre : ')); ?>
+			</div>
+			<div class="champPrenom">
+				<?php echo $this->Form->input('prenom', array('label' => 'Prénom : ')); ?>
 			</div>
 		</div>
 		
 		<?php echo $this->Form->input('nom', array('label' => 'Nom : '));
 		echo $this->Form->input('poste_occupe', array('label' => 'Poste occupé : '));
 		echo $this->Form->input('courriel', array('label' => 'Courriel : ', 'required' => 'required')); ?>
-		<div class='group'>
+		<div class='group groupTel'>
 			<?php echo $this->Form->input('tel', array('label' => 'Téléphone : ')); ?>
 			<div class="champPoste">
 				 <?php echo $this->Form->input('tel_poste', array('label' => 'Poste : ')); ?>

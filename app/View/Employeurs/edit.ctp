@@ -14,15 +14,18 @@
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('nom_entreprise', array('label' => 'Nom de l\'entreprise : ', 'required' => 'required'));
-		echo $this->Form->input('adresse_postale', array('label' => 'Adresse postale : '));
-		echo $this->Form->input('ville', array('label' => 'Ville : '));
-		echo $this->Form->input('province', array('label' => 'Province : '));
-		echo $this->Form->input('code_postal', array('label' => 'Code postal : '));
 		echo $this->Form->input('url', array('label' => 'Site web : '));
-		echo $this->Form->input('region_pays', array('label' => 'Région : '));
 		echo $this->Form->input('type', array('label' => 'Type d\'entreprise : '));
-		echo $this->Form->input('fax', array('label' => 'Fax : '));
-	?>
+		echo $this->Form->input('adresse_postale', array('label' => 'Adresse postale : '));
+		echo $this->Form->input('ville', array('label' => 'Ville : ')); ?>
+		<div class="group groupProvince">
+			<?php echo $this->Form->input('province', array('label' => 'Province : '));
+			echo $this->Form->input('code_postal', array('label' => 'Code postal : ')); ?>
+		</div>
+		<div class="group groupProvince">
+			<?php echo $this->Form->input('region_pays', array('label' => 'Région : '));
+			echo $this->Form->input('fax', array('label' => 'Fax : ')); ?>
+		</div>
 	</fieldset>
 	<a href="/employeurs/">Annuler </a>
 <?php echo $this->Form->end(__('Enregistrer')); ?>

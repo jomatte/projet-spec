@@ -19,31 +19,30 @@
 						</tr>
 					<?php endif; ?>
 					
-					<?php if($contact['Contact']['courriel']): ?>
-						<tr class="tCourriel">
-							<td>Courriel : </td>
-							<td><?php echo $contact['Contact']['courriel']; ?>&nbsp;</td>
-						</tr>
-					<?php endif; ?>
+					<tr class="tInfos">
+						<td colspan="2">
+							
+							<?php if($contact['Contact']['courriel']): ?>
+								<p><?php echo $contact['Contact']['courriel']; ?>&nbsp;</p>
+							<?php endif; ?>
+							
+							<?php if($contact['Contact']['tel']): ?>
+								<p><?php echo $contact['Contact']['tel']; ?><?php echo ($contact['Contact']['tel_poste']) ? ' p : ' . $contact['Contact']['tel_poste'] : ''; ?> &nbsp;</p>
+							<?php endif; ?>
+							
+							<?php //if($contact['Contact']['tel_cell']): ?>
+<!-- 								<td><?php //echo $contact['Contact']['tel_cell']; ?>&nbsp;</td> -->
+							<?php //endif; ?>
+							
+						</td>
+					</tr>
 					
-					<?php if($contact['Contact']['tel']): ?>
-						<tr class="tTelephone">
-							<td>Téléphone bureau : </td>
-							<td><?php echo $contact['Contact']['tel']; ?><?php echo ($contact['Contact']['tel_poste']) ? ' p : ' . $contact['Contact']['tel_poste'] : ''; ?> &nbsp;</td>
-						</tr>
-					<?php endif; ?>
-					
-					<?php if($contact['Contact']['tel_cell']): ?>
-						<tr class="tCell">
-							<td>Cellulaire : </td>
-							<td><?php echo $contact['Contact']['tel_cell']; ?>&nbsp;</td>
-						</tr>
-					<?php endif; ?>
-					
+<!--
 					<tr class="tSollicitable">
 						<td>Est sollicitable : </td>
-						<td><?php echo ($contact['Contact']['est_sollicitable']) ? 'Oui' : 'Non'; ?>&nbsp;</td>
+						<td><?php //echo ($contact['Contact']['est_sollicitable']) ? 'Oui' : 'Non'; ?>&nbsp;</td>
 					</tr>
+-->
 					<tr class="tActions">
 						<td ><a class="ok" href="/contacts/edit/<?php echo $contact['Contact']['id']; ?>/<?php echo $id; ?>"><i class="fa fa-pencil"></i></a></td>
 						<td><a class="sup" href="/contacts/delete/<?php echo $id; ?>/<?php echo $contact['Contact']['id']; ?>" onclick="return confirm('Êtes-vous certains de vouloir supprimer le contact : <?php echo $contact['Contact']['prenom'] . ' ' . $contact['Contact']['nom']; ?> ?')";><i class="fa fa-trash-o"></i></a></td>

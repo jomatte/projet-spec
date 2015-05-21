@@ -6,11 +6,13 @@ $(document).ready(function(){
 		})
 */
 		if($(this).hasClass('tOuvert')) {
+			$(this).removeClass('innactif');
 			$(this).next('tr').slideToggle();
 			$(this).removeClass('tOuvert');
 			$(this).find('td.fleche i').removeClass('flecheActif');
 		}
 		else{
+			$(this).addClass('innactif');
 			$(this).next('tr').slideToggle();
 			$(this).addClass('tOuvert');
 			$(this).find('td.fleche i').addClass('flecheActif');
@@ -27,11 +29,6 @@ $(document).ready(function(){
 			success: function(rechercheEmployeur){
 				$('table').html(rechercheEmployeur);
 				$('.tableauInterractif').on('click', function(e){
-/*
-					$('tr.tableauCache').each(function() {
-						$(this).hide();
-					})
-*/
 					$(this).next('tr').slideToggle();
 				})
 			}
